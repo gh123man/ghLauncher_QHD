@@ -300,10 +300,11 @@ public class AllApps3D extends RSSurfaceView
                                       240.f, 740.f,
                                       (2.f / 480.f), 0, -((float)w / 2) + 32.25f, -470.25f};
             if (w > h) {
-                tf[6] = 40.f;
-                tf[7] = h - 40.f;
+                tf[6] = 90.f;
+                tf[7] = h - 90.f;
+		tf[8] = (2.f / 450.f);
                 tf[9] = 1.f;
-                tf[10] = -((float)w / 2) - 0.25f;
+                tf[10] = -((float)w / 2) + 78.25f;
                 tf[11] = -((float)h / 2) - 0.25f;
             }
 
@@ -535,6 +536,9 @@ public class AllApps3D extends RSSurfaceView
         return handled;
     }
 
+
+// WORK HERE VVVV THIS IS GOING TO CONTROL THE TOUCH INTERACTION I THINK...(haha yes. it does)
+
     void initTouchState(int width, int height) {
         boolean isPortrait = width < height;
 
@@ -548,7 +552,7 @@ public class AllApps3D extends RSSurfaceView
         int cellHeight = 145;//iconsSize / Defines.ROWS_PER_PAGE_PORTRAIT;
         if (!isPortrait) cellHeight -= 12;
         int centerY = (int) (height * (isPortrait ? 0.5f : 0.47f));
-        if (!isPortrait) centerY += cellHeight / 2;
+        if (!isPortrait) centerY += cellHeight / 2 + 40;
         int half = (int) Math.floor((mRowsPerPage + 1) / 2);
         int end = mTouchYBorders.length - (half + 1);
 
@@ -558,7 +562,8 @@ public class AllApps3D extends RSSurfaceView
 
         int x = 0;
         // TODO: Put this in a config file/define
-        int columnWidth = 120;
+	//this 140 was a 120, it will chane the touch offset (left and right) of the whole screen :) perfect
+        int columnWidth = 140;
         for (int i = 0; i < mColumnsPerPage + 1; i++) {
             mTouchXBorders[i] = x - viewPos[0];
             x += columnWidth;
