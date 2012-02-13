@@ -334,8 +334,9 @@ void drawFrontGrid(float rowOffset, float p)
                 drawSimpleMesh(NAMED_SMCell);
 
                 bindProgramFragment(NAMED_PFTexMipAlpha);
-                vpConstants->ImgSize.x = 120.f;
-                vpConstants->ImgSize.y = 64.f;
+                //this is the text width for the drawer icons
+                vpConstants->ImgSize.x = 106.f;
+                vpConstants->ImgSize.y = 57.f;
                 vpConstants->Position.y = y - 64.f - 0.2f;
                 bindTexture(NAMED_PFTexMipAlpha, 0, loadI32(ALLOC_LABEL_IDS, iconNum));
                 drawSimpleMesh(NAMED_SMCell);
